@@ -45,7 +45,8 @@ desired value and measured value.
 For a PD-Controller, the D part of the controller damp the response and make the controller smoothier. Mathematically, it's proportional to rate of change of the control error.
 For a PID-Controller, the I part accumulate over time the difference between desired value and measured value to eliminate the residual error.
 
-I applied a manual tuning and I started the tuning process by the P-Controller. To calculate the controller error, I used the squared of the difference between the measured and desired values (squared of the CTE). 
+I applied a manual tuning and I started the tuning process by the P-Controller. To calculate the controller error, I used the squared of the difference between the measured and desired values (squared of the CTE).
+
 
 |   Kp   	|  Ki 	|  Kd  	| cte_error 	|
 |:------:	|:---:	|:----:	|:---------:	|
@@ -55,3 +56,16 @@ I applied a manual tuning and I started the tuning process by the P-Controller. 
 | -0.205 	| 0.0 	| -1.0 	| 0.256276  	|
 | -0.190 	| 0.0 	| -1.0 	| 0.279779  	|
 | -0.125 	| 0.0 	| -1.0 	| 0.397308  	|
+
+
+As shown above, the local minima is close to Kp = -0.220. It's not a optimization but is a good approximation. For the derivative part, I found the local minima around Kd = -2.00 as shown below.
+
+
+|   Kp   	|  Ki 	|  Kd  	| cte_error 	|
+|:------:	|:---:	|:----:	|:---------:	|
+| -0.220 	| 0.0 	| -2.25	| 0.315487  	|
+| -0.220 	| 0.0 	| -2.20	| 0.299376  	|
+| -0.220 	| 0.0 	| -1.75	| 0.22905   	|
+
+
+For the integral part, I didn't see a improvement with the addition of the Ki term. Finally, the coefficients are the following: Kp = -0.220, Ki = 0.0, Kd = -2.00.
