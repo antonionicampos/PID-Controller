@@ -40,4 +40,18 @@ Tips for setting up your environment can be found [here](https://classroom.udaci
 
 ## Reflexion
 
+First of all, synthetizing how each controller influence on the PID controller, P-Controller gives a proportional feedback for the system (in this case the car). A correction on steering angle is applied and it is proportional to the difference between
+desired value and measured value.
+For a PD-Controller, the D part of the controller damp the response and make the controller smoothier. Mathematically, it's proportional to rate of change of the control error.
+For a PID-Controller, the I part accumulate over time the difference between desired value and measured value to eliminate the residual error.
 
+I applied a manual tuning and I started the tuning process by the P-Controller. To calculate the controller error, I used the squared of the difference between the measured and desired values (squared of the CTE). 
+
+|   Kp   	|  Ki 	|  Kd  	| cte_error 	|
+|:------:	|:---:	|:----:	|:---------:	|
+| -0.250 	| 0.0 	| -1.0 	| 0.315487  	|
+| -0.235 	| 0.0 	| -1.0 	| 0.299376  	|
+| -0.220 	| 0.0 	| -1.0 	| 0.22905   	|
+| -0.205 	| 0.0 	| -1.0 	| 0.256276  	|
+| -0.190 	| 0.0 	| -1.0 	| 0.279779  	|
+| -0.125 	| 0.0 	| -1.0 	| 0.397308  	|
